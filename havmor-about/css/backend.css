@@ -1,0 +1,47 @@
+.webform-submission-form .description, .views-exposed-form{ display: none; }
+label.error{
+	color: red;
+    font-size: 1.1rem;
+    margin: 3px 0px;
+    display: block;
+    font-family: "GothamRoundedMedium";
+    padding-left: 5px;
+}
+
+.homeProductListSection .homeProductListWrap ul li p a{
+	margin-top: 15px;
+	color: #000;
+	text-transform: uppercase;
+	font-family: "GothamRoundedMedium";
+	font-size: 2.3rem;
+	text-decoration: none;
+}
+.occasion li label { cursor: pointer; }
+.filterDetail .ocationDetail .icecreamRow .icereamWrapp p a{
+    font-size: 1.35rem;
+    font-family: GothamRoundedBook;
+    margin-top: 25px;
+    letter-spacing: 1px;
+	text-decoration: none;
+	color: #000;
+}
+.webform-confirmation__message{
+	font-size: 2rem;
+	font-family: "GothamRoundedMedium";
+	text-align: center;
+}
+#ajax-wrapper--FlsmB32AQq4{
+	margin-top: 20px;
+}
+.form-wrapper .form-container .form-fields-wrapper .form-field-box{
+	display: block;
+}
+.careersubmit {
+    margin-top: 50px;
+}
+#edit-flexbox-04 {
+    margin-top: 0px;
+}
+.form-item-upload-file {
+    margin-top: 20px !important;
+}
