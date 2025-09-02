@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skillizee X Hocco Internship</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hocco-navy': '#2D2B7E',
+                        'hocco-red': '#C71545',
+                        'hocco-white': '#FFFFFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: url('https://handelsicecream.com/wp-content/uploads/2024/04/handels-seamless-bg.jpg') repeat;
+            background-size: auto;
+            cursor: url('https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg') 16 16, auto;
+        }
+        h1, h2, h3 {
+            text-align: left !important;
+        }
+        .flex.items-center {
+            justify-content: flex-start !important;
+            align-items: center;
+            text-align: left !important;
+        }
+        .hocco-navy { background-color: #2D2B7E; }
+        .hocco-red { color: #C71545; }
+        .hocco-white { background-color: #FFFFFF; }
+        .section-bg { background: linear-gradient(135deg, #FFFFFF 0%, #E6E6FA 100%); }
+        .scoop-bounce {
+            animation: scoopBounce 2s ease-in-out infinite;
+        }
+        @keyframes scoopBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .premium-badge {
+            background: #C71545;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .flip-card {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            margin: 0.5rem;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner, .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border: 2px solid #C71545;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .flip-card-front {
+            background: #FFFFFF;
+        }
+        .flip-card-back {
+            background: #E6E6FA;
+            transform: rotateY(180deg);
+        }
+        .flip-card-back p {
+            text-align: left;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+        }
+        .accordion-toggle {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-content {
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+        img {
+            margin: 0 auto;
+            display: block;
+        }
+        @media (max-width: 640px) {
+            .section-bg {
+                padding: 1rem;
+            }
+            .flip-card {
+                max-width: 100%;
+            }
+        }
+        @media print {
+            body { background: white; }
+            .flip-card-back { display: none; }
+            .flip-card-inner { transform: none; }
+            .accordion-content { max-height: none !important; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="hocco-navy text-white py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-bold">🍦 Skillizee X Hocco Internship</h1>
+                    <p class="mt-2 text-lg md:text-xl">Hocco’s Story - From Scoop to Success | August 22, 2025</p>
+                </div>
+                <div class="flex items-center">
+                    <span class="premium-badge">Virtual Internship</span>
+                    <img alt="Hocco Logo" class="w-12 h-12 ml-4 scoop-bounce" 
+                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                         src="https://skillizee-hocco-internsh-1q4k1i8.gamma.site/_astro/geometric_corner.BMfsU5Wp.png">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <!-- Program Overview -->
+        <section class="section-bg rounded-lg p-6 mb-8 shadow-lg">
+            <h2 class="text-2xl md:text-3xl font-semibold hocco-red mb-4 flex items-center">
+                <img alt="Overview Icon" class="w-8 h-8 mr-2 scoop-bounce" 
+                     onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                     src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-1.svg">Program Overview
+            </h2>
+            <p class="text-gray-700 text-sm md:text-base">
+                The Skillizee X Hocco Virtual Internship offers students hands-on experience with Hocco’s transformation from Havmor to a bold, premium brand. Learn brand building, product innovation, supply chain logistics, and financial strategies through interactive simulations and creative projects, inspired by Ankit Chona’s vision.
+            </p>
+            <img alt="Hocco Illustration" class="w-24 h-24 mt-4 scoop-bounce" 
+                 onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                 src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/h3.svg">
+        </section>
+
+        <!-- Modules -->
+        <section class="section-bg rounded-lg p-6 mb-8 shadow-lg">
+            <h2 class="text-2xl md:text-3xl font-semibold hocco-red mb-4 flex items-center">
+                <img alt="Modules Icon" class="w-8 h-8 mr-2 scoop-bounce" 
+                     onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                     src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/group.svg">Modules
+            </h2>
+            <!-- Module 1 -->
+            <div class="mb-4">
+                <div class="accordion-toggle bg-hocco-navy text-white p-3 rounded-lg">
+                    <h3 class="text-lg font-semibold">Module 1: The Hocco Story</h3>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">Havmor to Hocco</h3>
+                                    <img alt="History Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-1.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Havmor, a beloved Indian brand, was sold to Lotte in 2017 for ₹1,000 Cr. Hocco emerged in 2022 after a 5-year non-compete.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">Brand Identity</h3>
+                                    <img alt="Identity Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/h3.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Bold, premium branding with Indian flavors like sitaphal and paan, blending tradition and modernity.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm md:text-base mt-4">
+                        <strong>Activities:</strong> Create a visual timeline, design Hocco’s logo, and explore brand emotions.<br>
+                        <strong>Outcome:</strong> Understand family business dynamics and emotional branding.
+                    </p>
+                </div>
+            </div>
+            <!-- Module 2 -->
+            <div class="mb-4">
+                <div class="accordion-toggle bg-hocco-navy text-white p-3 rounded-lg">
+                    <h3 class="text-lg font-semibold">Module 2: The Comeback Code</h3>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">Non-compete Strategy</h3>
+                                    <img alt="Strategy Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/h5.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Hocco built secretly during a 5-year non-compete, learning from Ambani’s Jio success.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">Emotional Branding</h3>
+                                    <img alt="Branding Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/group.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Create trust through sensory packaging and bold, desi-cool visuals.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm md:text-base mt-4">
+                        <strong>Activities:</strong> Analyze Ambani vs. Hocco, design a Hocco café, or create Hocco Land.<br>
+                        <strong>Outcome:</strong> Learn competitive strategy and experience-based branding.
+                    </p>
+                </div>
+            </div>
+            <!-- Module 3 -->
+            <div class="mb-4">
+                <div class="accordion-toggle bg-hocco-navy text-white p-3 rounded-lg">
+                    <h3 class="text-lg font-semibold">Module 3: Business Model & Innovation</h3>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">Business Model</h3>
+                                    <img alt="Model Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-1.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Retail, café, franchise, and D2C drive Hocco’s revenue streams.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">R&D Process</h3>
+                                    <img alt="R&D Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/h3.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Test, filter, and launch new flavors using quick commerce and influencers.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm md:text-base mt-4">
+                        <strong>Activities:</strong> Create a business model canvas, redesign packaging, or simulate supply chain.<br>
+                        <strong>Outcome:</strong> Build business acumen and marketing skills.
+                    </p>
+                </div>
+            </div>
+            <!-- Module 4 -->
+            <div class="mb-4">
+                <div class="accordion-toggle bg-hocco-navy text-white p-3 rounded-lg">
+                    <h3 class="text-lg font-semibold">Module 4: Strategy & Finance</h3>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">Market Trends</h3>
+                                    <img alt="Trends Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/h5.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Focus on zero-sugar, fusion flavors, and nostalgia marketing.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">Funding</h3>
+                                    <img alt="Funding Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/group.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Explore Hocco’s initial funding and community trust-building strategies.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm md:text-base mt-4">
+                        <strong>Activities:</strong> Track trends, calculate startup costs, or pitch a new flavor.<br>
+                        <strong>Outcome:</strong> Understand market psychology and strategic thinking.
+                    </p>
+                </div>
+            </div>
+            <!-- Module 5 -->
+            <div class="mb-4">
+                <div class="accordion-toggle bg-hocco-navy text-white p-3 rounded-lg">
+                    <h3 class="text-lg font-semibold">Module 5: Your Scoop</h3>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">Future Vision</h3>
+                                    <img alt="Vision Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-1.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>AI-driven flavors and expansion into Tier 2/3 cities and global markets.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">Innovation Mindset</h3>
+                                    <img alt="Mindset Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/h3.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Create a student-led brand experience with ethical and innovative focus.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm md:text-base mt-4">
+                        <strong>Activities:</strong> Design a 2030 Hocco concept or a personal flavor.<br>
+                        <strong>Outcome:</strong> Present a vision grounded in business and creativity.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiential Activities -->
+        <section class="section-bg rounded-lg p-6 mb-8 shadow-lg">
+            <h2 class="text-2xl md:text-3xl font-semibold hocco-red mb-4 flex items-center">
+                <img alt="Activities Icon" class="w-8 h-8 mr-2 scoop-bounce" 
+                     onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                     src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/h5.svg">Experiential Activities
+            </h2>
+            <div class="mb-4">
+                <div class="accordion-toggle bg-hocco-navy text-white p-3 rounded-lg">
+                    <h3 class="text-lg font-semibold">Interactive Learning</h3>
+                    <span>▼</span>
+                </div>
+                <div class="accordion-content hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">Hocco Land Theme Park</h3>
+                                    <img alt="Theme Park Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/group.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Design a 3D theme park balancing aesthetics and functionality.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">Supply Chain Simulator</h3>
+                                    <img alt="Supply Chain Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/h3.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Manage raw materials, production, and logistics in a simulation.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">Business Model Canvas</h3>
+                                    <img alt="BMC Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-1.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Drag-and-drop to analyze Hocco’s business components.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">Startup Cost Calculator</h3>
+                                    <img alt="Calculator Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/h5.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Simulate budgeting and financial planning for a startup.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card scoop-bounce">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h3 class="text-lg font-semibold hocco-red">Ice Cream Concept Generator</h3>
+                                    <img alt="Concept Icon" class="w-8 h-8 mt-2" 
+                                         onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                         src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/group.svg">
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Create unique flavors and packaging for target audiences.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capstone Projects -->
+        <section class="section-bg rounded-lg p-6 mb-8 shadow-lg">
+            <h2 class="text-2xl md:text-3xl font-semibold hocco-red mb-4 flex items-center">
+                <img alt="Capstone Icon" class="w-8 h-8 mr-2 scoop-bounce" 
+                     onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                     src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/h3.svg">Final Capstone Projects
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="flip-card scoop-bounce">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3 class="text-lg font-semibold hocco-red">Project A: Scoop Stories</h3>
+                            <img alt="Scoop Stories Icon" class="w-8 h-8 mt-2" 
+                                 onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                 src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-1.svg">
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Design an Indian-inspired flavor, create a website, and pitch it in a video.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card scoop-bounce">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3 class="text-lg font-semibold hocco-red">Project B: Next Big Scoop</h3>
+                            <img alt="Next Scoop Icon" class="w-8 h-8 mt-2" 
+                                 onerror="this.src='https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/about-3.svg'" 
+                                 src="https://www.hocco.in/wp-content/themes/hocco/assets/images/illustration/h5.svg">
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Review a Hocco ice cream, post on Instagram, and submit a pitch video.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-gray-700 text-sm md:text-base mt-4">
+                Complete 85% of quizzes, 60% of assessments, and a capstone project for a Certificate of Completion.
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="hocco-navy text-white py-4">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm md:text-base">&copy; 2025 Skillizee X Hocco Virtual Internship</p>
+        </div>
+    </footer>
+
+    <script>
+        // GSAP Animations
+        gsap.fromTo("header", { y: -100, opacity: 0 }, { duration: 1, y: 0, opacity: 1, ease: "power2.out" });
+        gsap.fromTo(".section-bg", { opacity: 0, y: 50 }, { duration: 1, opacity: 1, y: 0, stagger: 0.2, delay: 0.5 });
+        gsap.fromTo(".scoop-bounce", { opacity: 0, scale: 0.8 }, { duration: 1, opacity: 1, scale: 1, stagger: 0.2, delay: 1 });
+        gsap.fromTo(".flip-card", { opacity: 0, y: 50 }, { duration: 1, opacity: 1, y: 0, stagger: 0.2, delay: 1 });
+        gsap.fromTo(".accordion-toggle", { opacity: 0, x: -50 }, { duration: 1, opacity: 1, x: 0, stagger: 0.2, delay: 1.5 });
+
+        // Flip Card Interaction
+        document.querySelectorAll('.flip-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
+            });
+        });
+
+        // Accordion Interaction
+        document.querySelectorAll('.accordion-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                content.classList.toggle('hidden');
+                toggle.querySelector('span').textContent = content.classList.contains('hidden') ? '▼' : '▲';
+            });
+        });
+
+        // Print Functionality
+        window.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                window.print();
+            }
+        });
+    </script>
+</body>
+</html>
